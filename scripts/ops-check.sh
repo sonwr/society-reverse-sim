@@ -3,6 +3,7 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 REPORT_FILE="${SRS_REPORT_FILE:-}"
+HISTORY_FILE="${SRS_HISTORY_FILE:-}"
 FAILURES=0
 
 check_file() {
@@ -50,6 +51,11 @@ echo "${summary}"
 if [[ -n "$REPORT_FILE" ]]; then
   printf '%s\n' "$summary" > "$REPORT_FILE"
   echo "[society-reverse-sim] wrote report: ${REPORT_FILE}"
+fi
+
+if [[ -n "$HISTORY_FILE" ]]; then
+  printf '%s\n' "$summary" >> "$HISTORY_FILE"
+  echo "[society-reverse-sim] appended history: ${HISTORY_FILE}"
 fi
 
 exit "$code"

@@ -45,6 +45,7 @@ chmod +x scripts/ops-check.sh
 
 Optional:
 - `SRS_REPORT_FILE=/tmp/society-reverse-sim-report.json ./scripts/ops-check.sh`
+- `SRS_HISTORY_FILE=/tmp/society-reverse-sim-history.jsonl ./scripts/ops-check.sh`
 
 ## Status
 
