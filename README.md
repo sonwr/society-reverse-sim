@@ -36,6 +36,16 @@ The inverse problem is non-unique by nature, so outputs are represented as:
 
 See `docs/ROADMAP.md`.
 
+## Operations check
+
+```bash
+chmod +x scripts/ops-check.sh
+./scripts/ops-check.sh
+```
+
+Optional:
+- `SRS_REPORT_FILE=/tmp/society-reverse-sim-report.json ./scripts/ops-check.sh`
+
 ## Status
 
 - [x] Repository bootstrap
