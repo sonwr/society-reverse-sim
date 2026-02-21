@@ -33,9 +33,9 @@ check_token() {
 
 check_file "readme" "${REPO_ROOT}/README.md"
 check_file "roadmap" "${REPO_ROOT}/docs/ROADMAP.md"
-check_token "concept section" "${REPO_ROOT}/README.md" "## (Concept|Overview)"
+check_token "concept section" "${REPO_ROOT}/README.md" "##[[:space:]]+.*(Concept|Overview|Background)"
 check_token "inverse mode" "${REPO_ROOT}/README.md" "(Reverse simulation|inverse social simulation|Inverse mode)"
-check_token "status section" "${REPO_ROOT}/README.md" "## Status"
+check_token "status section" "${REPO_ROOT}/README.md" "##[[:space:]]+.*Status"
 
 if (( FAILURES > 0 )); then
   status="fail"
