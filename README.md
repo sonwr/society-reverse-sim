@@ -1,95 +1,79 @@
 # society-reverse-sim
 
-<p align="center">
-  <strong>Forward + inverse social simulation</strong><br/>
-  Simulate emergent outcomes and infer plausible origins from observed states.
-</p>
+> **Forward + inverse social simulation for causal scenario reconstruction.**
 
-<p align="center">
-  <img alt="mode" src="https://img.shields.io/badge/simulation-forward%20%2B%20inverse-0EA5E9"/>
-  <img alt="focus" src="https://img.shields.io/badge/focus-causal%20inference-7C3AED"/>
-  <img alt="status" src="https://img.shields.io/badge/status-active%20development-16A34A"/>
-</p>
+![Status](https://img.shields.io/badge/Status-Active_Development-0ea5e9)
+![Domain](https://img.shields.io/badge/Domain-Causal_Simulation-black)
+![License](https://img.shields.io/badge/License-MIT-black)
 
----
+## ◼ Background
 
-## Overview
+Most simulation frameworks are excellent at forward prediction:
 
-`society-reverse-sim` addresses both directions of social simulation:
+> "If we start here, what happens next?"
 
-1. **Forward mode**: conditions + rules → outcomes
-2. **Inverse mode**: outcomes → plausible generating conditions
+But post-event analysis often needs the inverse question:
 
-The inverse problem is non-unique, so outputs are represented as candidate scenario sets with confidence bands.
+> "Given this observed state, what likely generated it?"
 
----
+This repository is dedicated to that inverse reconstruction challenge.
 
-## Why This Matters
+## ◼ Mission
 
-Traditional simulators answer “what if we start here?”.
-This project also asks “given what we observe now, what likely produced it?”.
+Build a practical simulation framework that supports both forward generation and inverse hypothesis ranking with explainable confidence semantics.
 
----
+## ◼ Vision
 
-## Core Deliverables
+A durable research/engineering platform for teams modeling social dynamics, policy outcomes, and emergent behavior under uncertain causes.
 
-- Forward simulator (toy-world to scalable model)
-- Inverse search engine over parameter/rule space
-- Scenario ranking with explainability
-- Structured reports (top-k plausible scenario sets)
+## ◼ Philosophy
 
----
+- **Non-uniqueness is expected** — inverse answers are candidate sets, not single truths.
+- **Explainability over brute confidence** — ranking requires interpretable scoring dimensions.
+- **Temporal context matters** — causality without timeline fidelity is weak causality.
 
-## Planned Architecture
+## ◼ Core Outputs
+
+| Output | Description |
+|---|---|
+| Forward trajectories | simulated outcome paths from seed conditions |
+| Inverse candidate sets | plausible origin scenarios ranked by fit |
+| Sensitivity views | parameter influence and fragility markers |
+| Structured reports | machine-readable + human-readable summaries |
+
+## ◼ Architecture
 
 ```mermaid
 flowchart LR
-  F[Forward Model] --> O[Observed Outcomes]
-  O --> I[Inverse Search]
-  I --> C[Candidate Scenarios]
-  C --> S[Scoring + Sensitivity]
-  S --> R[Ranked Report]
+  Seed[Forward Seed] --> Forward[Forward Simulator]
+  Forward --> Outcome[Observed Outcome Signature]
+  Outcome --> Inverse[Inverse Search Engine]
+  Inverse --> Rank[Candidate Ranking Layer]
+  Rank --> Report[Scenario Report]
 ```
 
----
+## ◼ MVP Scope
 
-## MVP Scope
+- forward state model definition
+- outcome signature model
+- baseline simulator
+- inverse parameter search
+- top-k candidate scenario ranking
 
-- Define forward state model
-- Define outcome signature model
-- Build baseline forward simulator
-- Build inverse parameter search
-- Return top-k plausible results
-
-See: `docs/ROADMAP.md`
-
----
-
-## Operations Check
+## ◼ Operations Check
 
 ```bash
 chmod +x scripts/ops-check.sh
 ./scripts/ops-check.sh
 ```
 
-Optional:
-
-```bash
-SRS_REPORT_FILE=/tmp/society-reverse-sim-report.json ./scripts/ops-check.sh
-SRS_HISTORY_FILE=/tmp/society-reverse-sim-history.jsonl ./scripts/ops-check.sh
-```
-
----
-
-## Status
+## ◼ Status
 
 - [x] Repository bootstrap
 - [ ] Forward simulator baseline
-- [ ] Inverse search engine
-- [ ] Scenario scoring + explainability
+- [ ] Inverse search core
+- [ ] Explainable scoring layer
 
----
+## ◼ License
 
-## License
-
-MIT (or project-defined license).
+MIT (or project-defined license)
