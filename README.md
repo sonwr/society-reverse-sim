@@ -1,86 +1,57 @@
 # society-reverse-sim
 
-<p align="center">
-  <img src="./docs/assets/readme/hero.svg" alt="society-reverse-sim cover" width="100%" />
-</p>
+Forward + inverse social simulation for causal hypothesis generation.
 
 <p align="center">
-  <strong>Reverse Causal Simulation</strong><br/>
-  Runs forward simulations and infers plausible origins from observed social states.
+  <img src="./docs/assets/readme/hero.svg" alt="society-reverse-sim hero" width="100%"/>
 </p>
 
-<p align="center">
-  <img alt="maintained" src="https://img.shields.io/badge/maintained-yes-16a34a"/>
-  <img alt="docs" src="https://img.shields.io/badge/docs-updated-0ea5e9"/>
-</p>
+## Concept
 
----
+Most simulators answer: “What happens if we start here?”
 
-## Table of Contents
+This project also answers: “Given what we observe now, what likely produced it?”
 
-- [Overview](#overview)
-- [Why This Project](#why-this-project)
-- [Core Capabilities](#core-capabilities)
-- [Tech Stack](#tech-stack)
-- [Quick Start](#quick-start)
-- [Operations](#operations)
-- [Roadmap](#roadmap)
-- [Security & Privacy](#security--privacy)
-- [Contributing](#contributing)
-- [License](#license)
+## Modes
 
----
+- **Forward simulation**: rules and initial states → outcomes
+- **Inverse mode**: outcomes → top-k plausible origin scenarios
 
-## Overview
+## Screenshots
 
-Runs forward simulations and infers plausible origins from observed social states.
+Sanitized terminal check:
 
-Inverse mode produces ranked candidate scenario sets with confidence bands.
+![society-reverse-sim terminal](./docs/assets/screenshots/terminal.svg)
 
-## Why This Project
+## MVP scope
 
-This repository exists to provide a practical, production-oriented foundation with clear operational visibility and repeatable workflows.
+- Forward state model
+- Outcome signature model
+- Baseline simulator
+- Inverse search over parameter space
+- Ranked scenario candidate output
 
-## Core Capabilities
-
-- Structured runtime behavior with deterministic checks
-- Ops-oriented scripts for health verification and reporting
-- Clean handoff between development, validation, and reporting
-- Incremental enhancements designed for continuous operation loops
-
-## Tech Stack
-
-`Python (planned), Simulation Engine, JSON outputs`
-
-## Quick Start
+## Operations check
 
 ```bash
 chmod +x scripts/ops-check.sh
 ./scripts/ops-check.sh
 ```
 
-## Operations
+Optional:
 
 ```bash
-SRS_REPORT_FILE=/tmp/srs-report.json ./scripts/ops-check.sh
+SRS_REPORT_FILE=/tmp/society-reverse-sim-report.json ./scripts/ops-check.sh
+SRS_HISTORY_FILE=/tmp/society-reverse-sim-history.jsonl ./scripts/ops-check.sh
 ```
 
-## Roadmap
+## Status
 
-- Improve monitoring depth and trend-based diagnostics
-- Expand automation and report schema consistency
-- Strengthen failure-mode handling and recovery behavior
-
-## Security & Privacy
-
-- Do not commit secrets, tokens, or private infrastructure details.
-- Keep screenshots sanitized (no personal identifiers, no credential surfaces).
-- Generated README images in this repo are synthetic and privacy-safe.
-
-## Contributing
-
-Issues and PRs are welcome. Please keep changes focused, tested, and operationally verifiable.
+- [x] Bootstrap + roadmap
+- [ ] Forward simulator baseline
+- [ ] Inverse search core
+- [ ] Explainable scoring layer
 
 ## License
 
-MIT (or project-defined license).
+MIT (or project-defined license)
