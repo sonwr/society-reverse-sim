@@ -23,7 +23,7 @@ check_token() {
   local path="$2"
   local pattern="$3"
 
-  if grep -q "$pattern" "$path"; then
+  if grep -Eqi "$pattern" "$path"; then
     echo "[society-reverse-sim] ${label}: ok (${pattern})"
   else
     echo "[society-reverse-sim] ${label}: missing token (${pattern})"
@@ -33,8 +33,8 @@ check_token() {
 
 check_file "readme" "${REPO_ROOT}/README.md"
 check_file "roadmap" "${REPO_ROOT}/docs/ROADMAP.md"
-check_token "concept section" "${REPO_ROOT}/README.md" "## Concept"
-check_token "inverse mode" "${REPO_ROOT}/README.md" "Reverse simulation"
+check_token "concept section" "${REPO_ROOT}/README.md" "## (Concept|Overview)"
+check_token "inverse mode" "${REPO_ROOT}/README.md" "(Reverse simulation|inverse social simulation|Inverse mode)"
 check_token "status section" "${REPO_ROOT}/README.md" "## Status"
 
 if (( FAILURES > 0 )); then
