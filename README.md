@@ -1,39 +1,35 @@
 # society-reverse-sim
 
-<p align="center">
-  <img src="./docs/assets/readme/hero.svg" alt="society-reverse-sim cover" width="100%" />
-</p>
+Forward + inverse social simulation for causal hypothesis generation.
 
 <p align="center">
-  <strong>Forward + inverse social simulation for causal scenario inference.</strong>
+  <img src="./docs/assets/readme/hero.svg" alt="society-reverse-sim hero" width="100%"/>
 </p>
 
-## Overview
+## Concept
 
-This project targets both directions of simulation:
+Most simulators answer: “What happens if we start here?”
 
-- **forward mode**: starting conditions → outcomes
-- **inverse mode**: outcomes → plausible origins
+This project also answers: “Given what we observe now, what likely produced it?”
 
-Inverse outputs are treated as ranked candidate sets, not single-answer certainty.
+## Modes
 
-## Why this is useful
+- **Forward simulation**: rules and initial states → outcomes
+- **Inverse mode**: outcomes → top-k plausible origin scenarios
 
-When a system drifts into an unexpected social state, debugging the origin is often harder than predicting the future.
+## Screenshots
 
-society-reverse-sim focuses on that inverse debugging problem.
-
-## Terminal snapshot
+Sanitized terminal check:
 
 ![society-reverse-sim terminal](./docs/assets/screenshots/terminal.svg)
 
 ## MVP scope
 
-- forward state model
-- outcome signature model
-- baseline simulator
-- inverse parameter search
-- top-k scenario ranking
+- Forward state model
+- Outcome signature model
+- Baseline simulator
+- Inverse search over parameter space
+- Ranked scenario candidate output
 
 ## Operations check
 
@@ -51,10 +47,10 @@ SRS_HISTORY_FILE=/tmp/society-reverse-sim-history.jsonl ./scripts/ops-check.sh
 
 ## Status
 
-- [x] bootstrap + roadmap
-- [ ] forward simulator baseline
-- [ ] inverse search core
-- [ ] explainable scoring layer
+- [x] Bootstrap + roadmap
+- [ ] Forward simulator baseline
+- [ ] Inverse search core
+- [ ] Explainable scoring layer
 
 ## License
 
