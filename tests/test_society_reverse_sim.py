@@ -98,6 +98,18 @@ class TestInverseFitScore(unittest.TestCase):
 
     self.assertTrue(all(0 <= item["fit_score"] <= 1 for item in ranking))
 
+  def test_fit_band_is_present_and_valid(self):
+    ranking = rank_inverse_candidates(
+      observed_final_adopters=40,
+      population=80,
+      initial_adopters=8,
+      steps=4,
+      top_k=5,
+      rate_grid=[0.0, 0.1, 0.2],
+    )
+
+    self.assertTrue(all(item["fit_band"] in {"strong", "moderate", "weak"} for item in ranking))
+
 
 class TestCli(unittest.TestCase):
   def test_forward_cli_prints_json(self):

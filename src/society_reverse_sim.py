@@ -105,12 +105,14 @@ def rank_inverse_candidates(
       result = simulate_forward(params)
       error = abs(result["final_adopters"] - observed_final_adopters)
       fit_score = round(1 - (error / max(1, population)), 4)
+      fit_band = "strong" if fit_score >= 0.9 else "moderate" if fit_score >= 0.75 else "weak"
       candidates.append(
         {
           "params": asdict(params),
           "predicted_final_adopters": result["final_adopters"],
           "abs_error": error,
           "fit_score": fit_score,
+          "fit_band": fit_band,
         }
       )
 
