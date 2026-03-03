@@ -80,8 +80,23 @@ class TestInverseRanking(unittest.TestCase):
       rate_grid=[0.05, 0.1, 0.2, 0.3],
     )
     self.assertEqual(ranking[0]["abs_error"], 0)
+    self.assertEqual(ranking[0]["fit_score"], 1.0)
     self.assertEqual(ranking[0]["params"]["adopt_rate"], 0.2)
     self.assertEqual(ranking[0]["params"]["churn_rate"], 0.05)
+
+
+class TestInverseFitScore(unittest.TestCase):
+  def test_fit_score_is_normalized_between_zero_and_one(self):
+    ranking = rank_inverse_candidates(
+      observed_final_adopters=40,
+      population=80,
+      initial_adopters=8,
+      steps=4,
+      top_k=5,
+      rate_grid=[0.0, 0.1, 0.2],
+    )
+
+    self.assertTrue(all(0 <= item["fit_score"] <= 1 for item in ranking))
 
 
 class TestCli(unittest.TestCase):

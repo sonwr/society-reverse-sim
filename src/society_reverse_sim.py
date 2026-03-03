@@ -104,11 +104,13 @@ def rank_inverse_candidates(
       )
       result = simulate_forward(params)
       error = abs(result["final_adopters"] - observed_final_adopters)
+      fit_score = round(1 - (error / max(1, population)), 4)
       candidates.append(
         {
           "params": asdict(params),
           "predicted_final_adopters": result["final_adopters"],
           "abs_error": error,
+          "fit_score": fit_score,
         }
       )
 
@@ -116,6 +118,7 @@ def rank_inverse_candidates(
     candidates,
     key=lambda item: (
       item["abs_error"],
+      -item["fit_score"],
       item["params"]["churn_rate"],
       -item["params"]["adopt_rate"],
     ),
